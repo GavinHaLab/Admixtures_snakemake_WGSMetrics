@@ -254,7 +254,6 @@ for i in range(0, numMixtures):
       thisTFLabel = str(thisTF) + '0'    
     print('Desired TF = ' + thisTFLabel)  
 
-    #Fix by CL:
     #We need to solve the following system of equations for tProb and nProb.
     # thisTumorCov * tProb + thisNormalCov * nProb = thisCover
     # (thisTumorCov * thisPurity * tProb) / (thisTumorCov * tProb + thisNormalCov * nProb) = thisTF
@@ -262,7 +261,7 @@ for i in range(0, numMixtures):
     #Solution:
     tProb = (thisTF * thisCover) / (thisTumorCov * thisPurity)
     nProb = (thisCover - thisTumorCov * tProb) / thisNormalCov
-
+   
     #print
     print(f'{thisTumorCov} * tProb + {thisNormalCov} * nProb = {thisCover}')
     print(f'({thisTumorCov} * {thisPurity} * tProb) / ({thisTumorCov} * tProb + {thisNormalCov} * nProb) = {thisTF}')
@@ -270,43 +269,10 @@ for i in range(0, numMixtures):
     print("tProb:", tProb)
     print("nProb:", nProb)
 
-    #Below commented code is incorrect - CL
-    """"
-    targetCover = thisCover
-    
-    targetCoverTumor = thisCover * thisTF
-    targetCoverNormal = thisCover - targetCoverTumor
-    print(f'targetCover: {targetCover}, targetCoverTumor: {targetCoverTumor}, thisCover: {thisCover}, thisTF: {thisTF}, thisNormalCov: {thisNormalCov}')
-    print('   Target coverage: total = ' + str(targetCover) + ', tumor = ' + str(targetCoverTumor) + ', normal = ' + str(targetCoverNormal))
-
-    tProb = 0
-    if tCoverTumor < targetCoverTumor:
-        print('   Insufficient tumor coverage in tumor sample. Prob = 0')
-    else:
-      tProb = round(targetCoverTumor / tCoverTumor, 3)
-      print(tProb)
-    needNormal = targetCover * (1-thisTF) ## XXX need to actually recompute this value... likely not the correct way to get this. 
-    print(needNormal)
-    nProb = 0
-    if needNormal > 0:
-        if thisNormalCov < needNormal:
-        
-          print('   Insufficient reads in the normal sample. Prob = 0')
-        else:
-          nProb = round(targetCoverNormal / thisNormalCov, 3)
-          print(nProb)
-    else:
-      print('   Not possible, too many normal reads in tumor sample...')
-    print('so, output values are:')
-    print(f'targetCoverage:{targetCover}\ntumorSampleCoverage:{thisTumorCov}\nnormalSampleCoverage:{thisNormalCov}\ntProb:{tProb}\nnProb:{nProb}')
-    print(f'sanity check: tumor coverage * tProb: {thisTumorCov*tProb}\nnormal coverage*nProb: {thisNormalCov*nProb}')
-    tSampOutCov = thisTumorCov*tProb
-    nSampOutCov = thisNormalCov*nProb
-    totalOut = tSampOutCov + nSampOutCov
-    if not totalOut < 30.1 and not totalOut > 29.9:
-      print(f'\n\n\nERROR IN CALCULATION, output is {totalOut}\n\n\n\n')
-      print()
-    """
+    if tProb < 0 or tProb > 1 or nProb < 0 or nProb > 1:
+      print("No possible solution for this mixture.")
+      sys.exit()
+   
     #----------------------------------
     #--- CREATE TEXT LINES FOR YAML ---
     #----------------------------------
