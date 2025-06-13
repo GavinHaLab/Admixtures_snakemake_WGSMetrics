@@ -1,0 +1,8 @@
+# SLURM RESOURCE SETTINGS FILE
+__default__:
+    partition:  campus-new # users specified
+    mem:    300G      # GB of RAM to use for the process
+    time:   "240:0:0"  # Allow an amount of time for the process
+    ncpus:  24       # Number of cores to request
+    ntasks: 1
+    output: logs/cluster/{rule}.%A.out

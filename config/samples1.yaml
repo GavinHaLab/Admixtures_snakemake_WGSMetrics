@@ -1,0 +1,60 @@
+# This is the main input YAML, the order of the sections below needs to be preserved:
+# Samples, purities, mixtures, coverage, fraction
+
+# ----- SAMPLE DETAILS -----
+# This is the set of samples / mixtures that we'll process
+samples:
+  20-01A.2: /fh/working/ha_g/projects/PDXctDNA/deeperCoverage/20-01A.2.bam
+  20-01B.1: /fh/working/ha_g/projects/PDXctDNA/deeperCoverage/20-01B.1.bam
+  BCAP52-1190: /fh/working/ha_g/projects/PDXctDNA/deeperCoverage/BCAP52-1190.bam
+  LgCaP-1-1125: /fh/working/ha_g/projects/PDXctDNA/deeperCoverage/LgCaP-1-1125.bam
+  KP63704_2plasma: /fh/working/ha_g/projects/HealthyDonor_cfDNA/KP/KP63704_2plasma/KP63704_2plasma.bam
+  KP63705_2plasma: /fh/working/ha_g/projects/HealthyDonor_cfDNA/KP/KP63705_2plasma/KP63705_2plasma.bam
+  KP63706_2plasma: /fh/working/ha_g/projects/HealthyDonor_cfDNA/KP/KP63706_2plasma/KP63706_2plasma.bam
+  KP63707_2plasma: /fh/working/ha_g/projects/HealthyDonor_cfDNA/KP/KP63707_2plasma/KP63707_2plasma.bam
+
+# This is the list of purities for the samples above, purity of 1.0000 = 100% tumor
+# Note that the order here needs to be the same as the samples above
+purities:
+  20-01A.2: .99
+  20-01B.1: .99
+  BCAP52-1190: .94
+  LgCaP-1-1125: .97
+  KP63704_2plasma: 0
+  KP63705_2plasma: 0
+  KP63706_2plasma: 0
+  KP63707_2plasma: 0
+
+# ----- MIXTURE DETAILS -----
+# These are the mixtures we want to make with partners identified
+# Maintain the order of the mixture listings across the three sections
+mixtures:
+  20-01A.2--KP63704_2plasma: ["20-01A.2", "KP63704_2plasma"]
+  20-01A.2--KP63705_2plasma: ["20-01A.2", "KP63705_2plasma"]
+  BCAP52-1190--KP63704_2plasma: ["BCAP52-1190", "KP63704_2plasma"]
+  BCAP52-1190--KP63705_2plasma: ["BCAP52-1190", "KP63705_2plasma"]
+  20-01B.1--KP63706_2plasma: ["20-01B.1", "KP63706_2plasma"]
+  20-01B.1--KP63707_2plasma: ["20-01B.1", "KP63707_2plasma"]
+  LgCaP-1-1125--KP63706_2plasma: ["LgCaP-1-1125", "KP63706_2plasma"]
+  LgCaP-1-1125--KP63707_2plasma: ["LgCaP-1-1125", "KP63707_2plasma"]
+# These are the coverages we want for the pairings above, e.g. 0.30 = 0.30X
+coverage:
+  20-01A.2--KP63704_2plasma: 30
+  20-01A.2--KP63705_2plasma: 30
+  BCAP52-1190--KP63704_2plasma: 30
+  BCAP52-1190--KP63705_2plasma: 30
+  20-01B.1--KP63706_2plasma: 30
+  20-01B.1--KP63707_2plasma: 30
+  LgCaP-1-1125--KP63706_2plasma: 30
+  LgCaP-1-1125--KP63707_2plasma: 30
+# These are the tumor fractions we want for the pairings above: start, end, increment values
+# Enter tumor fraction as 0.XX, i.e. precision to the hundredths place but not beyond - NO, IT IS TUMOR PERCENTAGE, IE. IF YOU WANT 10% MIXTURE, ENTER 10. 
+fractions:
+  20-01A.2--KP63704_2plasma: [5, 10, 15, 20, 30, 40]
+  20-01A.2--KP63705_2plasma: [5, 10, 15, 20, 30, 40]
+  BCAP52-1190--KP63704_2plasma: [5, 10, 15, 20, 30, 40]
+  BCAP52-1190--KP63705_2plasma: [5, 10, 15, 20, 30, 40]
+  20-01B.1--KP63706_2plasma: [5, 10, 15, 20, 30, 40]
+  20-01B.1--KP63707_2plasma: [5, 10, 15, 20, 30, 40]
+  LgCaP-1-1125--KP63706_2plasma: [5, 10, 15, 20, 30, 40]
+  LgCaP-1-1125--KP63707_2plasma: [5, 10, 15, 20, 30, 40]

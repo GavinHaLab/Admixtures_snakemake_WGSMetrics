@@ -1,0 +1,20 @@
+## CONFIG FILE PARAMETERS
+# In general we assume we are using the HG38 build of the human genome
+
+# Reference (human) genome for HG38
+ref_genome: /fh/fast/ha_g/grp/reference/GRCh38/Broad_bundle_hg38/v0/Homo_sapiens_assembly38.fasta
+
+# Location of Picard tools jar file
+picard:     /app/software/picard/2.18.29-Java/picard.jar
+
+# Location of samtools to use
+samtools:   /fh/fast/ha_g/app/bin/samtools
+
+# Java memory parameters to ensure sufficient sizing
+# Note that Xmx and Xms might need to be increased to accommodate larger files
+java_mem:   -XX:GCTimeLimit=90 -XX:GCHeapFreeLimit=10 -Xmx200G -Xms200G
+
+# List of chromosomes for DNA extraction, HG38 style and order
+# Note that you can remove chrX or not as desired
+chrs:       chr1 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr2 chr20 chr21 chr22 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chrX chrY
+
