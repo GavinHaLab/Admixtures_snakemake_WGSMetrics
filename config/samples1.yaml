@@ -37,7 +37,7 @@ mixtures:
   20-01B.1--KP63707_2plasma: ["20-01B.1", "KP63707_2plasma"]
   LgCaP-1-1125--KP63706_2plasma: ["LgCaP-1-1125", "KP63706_2plasma"]
   LgCaP-1-1125--KP63707_2plasma: ["LgCaP-1-1125", "KP63707_2plasma"]
-# These are the coverages we want for the pairings above, e.g. 0.30 = 0.30X
+# These are the coverages we want for the pairings above, e.g. 30 = 30X
 coverage:
   20-01A.2--KP63704_2plasma: 30
   20-01A.2--KP63705_2plasma: 30
@@ -47,8 +47,7 @@ coverage:
   20-01B.1--KP63707_2plasma: 30
   LgCaP-1-1125--KP63706_2plasma: 30
   LgCaP-1-1125--KP63707_2plasma: 30
-# These are the tumor fractions we want for the pairings above: start, end, increment values
-# Enter tumor fraction as 0.XX, i.e. precision to the hundredths place but not beyond - NO, IT IS TUMOR PERCENTAGE, IE. IF YOU WANT 10% MIXTURE, ENTER 10. 
+# Enter tumor percentages you want in the mixture as a List, ie [20, 40] for 20% and 40% tumor percentages respectively
 fractions:
   20-01A.2--KP63704_2plasma: [5, 10, 15, 20, 30, 40]
   20-01A.2--KP63705_2plasma: [5, 10, 15, 20, 30, 40]
